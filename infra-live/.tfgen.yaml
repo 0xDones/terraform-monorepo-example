@@ -1,0 +1,20 @@
+---
+root_file: true
+vars:
+  company: acme
+template_files:
+  _backend.tf: |
+    terraform {
+      backend "s3" {
+        bucket         = "my-state-bucket"
+        dynamodb_table = "my-lock-table"
+        encrypt        = true
+        key            = "{{ .tfgen_working_dir }}/terraform.tfstate"
+        region         = "{{ .aws_region }}"
+        role_arn       = "arn:aws:iam::{{ .aws_account }}:role/terraformRole"
+      }
+    }
+  _provider.tf: |
+    provider "aws" {
+      region = "{{ .aws_region }}"
+    }

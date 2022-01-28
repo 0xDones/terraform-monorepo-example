@@ -1,0 +1,13 @@
+---
+root_file: false
+vars:
+  aws_account: 2222222222
+  aws_region: us-east-2
+template_files:
+  _vars.tf: |
+    variable "env" {
+        type    = string
+        default = "prod"
+    }
+  example.tf: |
+    # I'll just be created on modules inside the prod folder
