@@ -30,11 +30,11 @@ This is our basic structure. Let's dive into it.
         └── main.tf
 ```
 
-## `infra-live` organizaiton
+## Patterns
 
-Our `infra-live` folder will contain all our actual infrastructure, separated by environment. Considering an environment folder, you can organize it in several ways, for example:
+Let's cover some patterns to organize the `infra-live` folder, which will contain all the actual infrastructure, separated by environment. Considering an environment folder, you can organize it in several ways.
 
-### Folders by resources
+### By resource
 
 You can create individual folders for each resources in the cloud, so you would have something like this:
 
@@ -51,7 +51,7 @@ You can create individual folders for each resources in the cloud, so you would 
 └── vpc
 ```
 
-### Folders by type
+### By resource group
 
 You can create folders based on the resources type (compute, security, networking, etc):
 
@@ -68,13 +68,13 @@ You can create folders based on the resources type (compute, security, networkin
 │   ├── rds
 │   └── s3
 └── networking
-│   ├── vpc
-│   └── vpc-peering
+    ├── vpc
+    └── vpc-peering
 ```
 
 ### Mixed
 
-Using this pattern you'll have a mix of the other two. Let's talk about the `stacks` folder. Sometimes you have an app that use multiple cloud resources, like `SQS Queues`, `SNS Topics`, `S3 Buckets`, so it could be confused to deploy these resources in different places, so maybe it makes sense to have a module just for this app. You could add it to the `stacks` folder, and deploy all of them together.
+Using this pattern you'll have a mix of the previous two. Let's talk about the `stacks` folder. Sometimes you have an app that use multiple cloud resources, like `SQS Queues`, `SNS Topics`, `S3 Buckets`, so it could be confused to deploy these resources in different places, so maybe it makes sense to have a module just for this app. You could add it to the `stacks` folder, and deploy all of them together.
 
 ```txt
 .
@@ -92,17 +92,47 @@ Using this pattern you'll have a mix of the other two. Let's talk about the `sta
 │   ├── my-bucket-1
 │   └── my-bucket-1
 └── networking
-│   ├── vpc
-│   └── vpc-peering
+    ├── vpc
+    └── vpc-peering
 ```
 
 ## Files organization
 
-To organize your files and have a pattern across multiple modules, somo common files you can have are the following:
+To organize your files and have a pattern across multiple modules, you can name your files like this:
 
 - `_backend.tf`: Put your backend configuration here
 - `_dependencies.tf`: Whenever you need to query data from the state or the cloud, add it here
 - `_provider.tf`: Your providers configuration
 - `_vars_.tf|_variables.tf`: The variables declaration
+- `main.tf`: The modules and resources declaration
 
-[tfgen](https://github.com/refl3ction/tfgen) is a tool that will help you to create these files from generic templates. Give it a try!
+## Anti-Patterns
+
+Some anti-patterns I observed and heard about
+
+### Single module for the entire infrastructure
+
+In my opinion this is the most common anti-pattern. Some people may argument that having a module that deploys the entire infrastructure is a good thing and will be useful in a disaster recovery situation. But the problem is, that you probably never gonna need to do that. The operational overhead for keeping this structure will not be paid by the "benefit" it offers.
+
+In addition, we have other problems by using this structure:
+
+- All the `plans/applies` will take a long time to run, and it will just get worse as your infrastrcture grows. The `-target` option should be used just in exceptional circunstances, as mentioned in the Terraform documentation.
+- The companies will grow with time, so will the need for deploying cloud resources and people contributing to the project. Having just one module will be `impracticable`. Velocity will be severely reduced.
+- High risk of messing something up.
+
+So, if you see something like this, ~~run~~ show them this repo!
+
+```txt
+.
+└── entire-infra-module
+    ├── backend.tf
+    ├── s3.tf
+    ├── iam.tf
+    ├── eks.tf
+    ├── vpc.tf
+    └── rds.tf
+```
+
+## Related
+
+- [tfgen](https://github.com/refl3ction/tfgen) - The tool used in this example
