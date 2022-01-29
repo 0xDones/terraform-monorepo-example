@@ -2,6 +2,11 @@
 
 This repo is an example to help you to scale your Terraform monorepo in an organized way.
 
+## Tools
+
+- [tfgen](https://github.com/refl3ction/tfgen) - We use tfgen to generate Terraform boilerplate code for our modules, like backend, provider configuration and variables
+- [tfenv](https://github.com/tfutils/tfenv) - Terraform version manager, to switch to different version between modules automatically
+
 ## Overview
 
 This is our basic structure. Let's dive into it.
@@ -17,11 +22,13 @@ This is our basic structure. Let's dive into it.
 │   ├── dev
 │   │   ├── networking
 │   │   ├── s3
+│   │   ├── security
 │   │   ├── stacks
 │   │   └── .tfgen.yaml
 │   ├── prod
 │   │   ├── networking
 │   │   ├── s3
+│   │   ├── security
 │   │   ├── stacks
 │   │   └── .tfgen.yaml
 │   └── .tfgen.yaml
@@ -136,3 +143,4 @@ So, if you see something like this, ~~run~~ show them this repo!
 ## Related
 
 - [tfgen](https://github.com/refl3ction/tfgen) - The tool used in this example
+- [tfenv](https://github.com/tfutils/tfenv) - Terraform version manager
