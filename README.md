@@ -81,7 +81,7 @@ You can create folders based on the resources type (compute, security, networkin
 
 ### Mixed
 
-Using this pattern you'll have a mix of the previous two. Let's talk about the `stacks` folder. Sometimes you have an app that use multiple cloud resources, like `SQS Queues`, `SNS Topics`, `S3 Buckets`, so it could be confused to deploy these resources in different places, so maybe it makes sense to have a module just for this app. You could add it to the `stacks` folder, and deploy all of them together.
+Using this pattern you'll have a mix of the previous two.
 
 ```txt
 .
@@ -102,6 +102,12 @@ Using this pattern you'll have a mix of the previous two. Let's talk about the `
     ├── vpc
     └── vpc-peering
 ```
+
+#### Stacks
+
+Let's talk about the `stacks` folder. Sometimes you have an app that uses multiple cloud resources, like `SQS Queues`, `SNS Topics`, `S3 Buckets`, so it could be confused to deploy these resources in different places, so maybe it makes sense to have a module just for this app. You could add it to the `stacks` folder, and deploy all of them together. If you do that, makes sense to give all the resources some kind of prefix, ideally the name of the app that uses it.
+
+> This pattern can get trick if you have a shared resources between more than one app, for example a `SQS Queue` that have a consumer and a writer.
 
 ## Files organization
 
