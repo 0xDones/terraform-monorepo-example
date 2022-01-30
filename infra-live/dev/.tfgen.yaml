@@ -1,7 +1,7 @@
 ---
 root_file: false
 vars:
-  aws_account: 1111111111
+  aws_account_id: 111111111111
   aws_region: us-east-1
 template_files:
   _vars.tf: |

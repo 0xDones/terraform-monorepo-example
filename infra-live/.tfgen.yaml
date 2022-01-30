@@ -11,10 +11,13 @@ template_files:
         encrypt        = true
         key            = "{{ .tfgen_working_dir }}/terraform.tfstate"
         region         = "{{ .aws_region }}"
-        role_arn       = "arn:aws:iam::{{ .aws_account }}:role/terraformRole"
+        role_arn       = "arn:aws:iam::{{ .aws_account_id }}:role/terraformRole"
       }
     }
   _provider.tf: |
     provider "aws" {
       region = "{{ .aws_region }}"
+      allowed_account_ids = [
+        "{{ .aws_account_id }}"
+      ]
     }
