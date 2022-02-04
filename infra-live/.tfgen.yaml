@@ -21,3 +21,8 @@ template_files:
         "{{ .aws_account_id }}"
       ]
     }
+  _vars.tf: |
+    variable "env" {
+        type    = string
+        default = "{{ .env }}"
+    }

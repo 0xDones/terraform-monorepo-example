@@ -3,9 +3,4 @@ root_file: false
 vars:
   aws_account_id: 111111111111
   aws_region: us-east-1
-template_files:
-  _vars.tf: |
-    variable "env" {
-        type    = string
-        default = "dev"
-    }
+  env: dev
