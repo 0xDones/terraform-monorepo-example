@@ -4,7 +4,7 @@
 [![lang](https://img.shields.io/badge/Terraform-~%3E%201.0.0-blue)](https://github.com/refl3ction/tfgen)
 [![GitHub stars](https://img.shields.io/github/stars/refl3ction/terraform-monorepo-example.svg?style=social&label=Star&maxAge=2592000)](https://github.com/refl3ction/terraform-monorepo-example/stargazers/)
 
-This repo is an example to help you to scale your Terraform monorepo in an organized way.
+Learn how to design a scalable Terraform monorepo
 
 ## Tools
 
@@ -13,7 +13,7 @@ This repo is an example to help you to scale your Terraform monorepo in an organ
 
 ## Overview
 
-This is our basic structure. Let's dive into it.
+### High level folders
 
 - `infra-live`: Here you would separate your resources per environment, and inside this folder you can organize the resources in your own way. What matters here is that the pattern is known inside your organization and the people know how to deal with it
 - `modules`: Here you would create your own reusable modules. Keep in mind that you can find lots of open source modules from the community, so my recommendation is to look over Github if someone already built a module for your use case. Common modules you can find out there, for example [terraform-aws-vpc](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest), covers pretty much everything you need to provision a VPC on AWS, so probably it is not worth building your own.
