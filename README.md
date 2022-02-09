@@ -1,5 +1,9 @@
 # Terraform Monorepo Example
 
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/refl3ction/terraform-monorepo-example/graphs/commit-activity)
+[![lang](https://img.shields.io/badge/Terraform-~%3E%201.0.0-blue)](https://github.com/refl3ction/tfgen)
+[![GitHub stars](https://img.shields.io/github/stars/refl3ction/terraform-monorepo-example.svg?style=social&label=Star&maxAge=2592000)](https://github.com/refl3ction/terraform-monorepo-example/stargazers/)
+
 This repo is an example to help you to scale your Terraform monorepo in an organized way.
 
 ## Tools
