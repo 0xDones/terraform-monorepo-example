@@ -2,7 +2,7 @@
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/refl3ction/terraform-monorepo-example/graphs/commit-activity)
 [![lang](https://img.shields.io/badge/Terraform-~%3E%201.0.0-blue)](https://github.com/refl3ction/tfgen)
-[![GitHub stars](https://img.shields.io/github/stars/refl3ction/terraform-monorepo-example.svg?style=social&label=Star&maxAge=2592000)](https://github.com/refl3ction/terraform-monorepo-example/stargazers/)
+[![GitHub stars](https://img.shields.io/github/stars/refl3ction/terraform-monorepo-example.svg?style=social&label=Star)](https://github.com/refl3ction/terraform-monorepo-example/stargazers/)
 
 Learn how to design a scalable Terraform monorepo
 
